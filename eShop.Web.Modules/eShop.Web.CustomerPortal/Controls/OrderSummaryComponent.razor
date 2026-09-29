@@ -1,48 +1,30 @@
-﻿@using eShop.CoreBusiness.Models
+@using eShop.CoreBusiness.Models
 @inject NavigationManager navigationManager
 
-<div class="card m-2" style="width: 25rem;">
-    <div class="card-body">
-        <h5 class="card-title">Order Summary</h5>
-        <div class="card-text d-flex justify-content-between">
-            <div>
-                Items (@itemsCount):
-            </div>
-            <div>
-                @itemsTotalPrice.ToString("c")
-            </div>
-        </div>
-        <div class="card-text d-flex justify-content-between">
-            <div>
-                Shipping And Handling:
-            </div>
-            <div>
-                <text>$0.00</text>
-            </div>
-        </div>
-        <div class="card-text d-flex justify-content-between">
-            <div>
-                Estimated Tax:
-            </div>
-            <div>
-                <text>$0.00</text>
-            </div>
-        </div>
-        <hr />
-        <div class="card-text d-flex justify-content-between" style="color:darkred">
-            <div>
-                <b>Order Total:</b>
-            </div>
-            <div>
-                <b>@itemsTotalPrice.ToString("c")</b>
-            </div>
-        </div>
+<div class="order-summary-box">
+    <h5 class="order-summary-title">Order Summary</h5>
+    <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">Items (@itemsCount):</span>
+        <span class="fw-semibold">@itemsTotalPrice.ToString("c")</span>
     </div>
+    <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">Shipping & Handling:</span>
+        <span class="fw-semibold text-success">Free</span>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <span class="text-muted">Estimated Tax:</span>
+        <span class="fw-semibold">$0.00</span>
+    </div>
+    <div class="d-flex justify-content-between order-total-row">
+        <span>Order Total:</span>
+        <span>@itemsTotalPrice.ToString("c")</span>
+    </div>
+
     @if (!HidePlaceOrderButton && !HidePlaceOrder)
     {
-        <div class="col p-2"> 
-            <button class="btn btn-primary" @onclick="PlaceOrder">Place your order</button>
-        </div>
+        <button class="btn btn-primary w-100 mt-4 py-2" @onclick="PlaceOrder">
+            Proceed to Checkout
+        </button>
     }
 </div>
 

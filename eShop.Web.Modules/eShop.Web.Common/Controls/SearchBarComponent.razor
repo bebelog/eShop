@@ -1,14 +1,12 @@
-<div class="mb-3 row">
-    <div class="col-auto">
-        <input type="text" class="form-control" @bind-value="filter" placeholder="Search product..." />
-    </div>
-    <div class="col-auto">
+<div class="search-container">
+    <div class="search-input-group">
+        <input type="text" class="form-control" @bind-value="filter" placeholder="Search products by name or brand..." @onkeydown="HandleKeyDown" />
         <button type="button" class="btn btn-primary" @onclick="HandleSearch">Search</button>
     </div>
 </div>
 
 @code {
-    private string filter;
+    private string filter = string.Empty;
 
     [Parameter]
     public EventCallback<string> OnSearch { get; set; }
@@ -16,5 +14,13 @@
     private void HandleSearch()
     {
         OnSearch.InvokeAsync(filter);
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            HandleSearch();
+        }
     }
 }
