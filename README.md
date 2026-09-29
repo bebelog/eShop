@@ -44,7 +44,7 @@ eShop/
 * **Màn hình xác nhận (Order Confirmation):** Cung cấp mã đơn hàng duy nhất (`UniqueId`) để khách hàng tra cứu.
 
 ### 🛡️ 2. Phân hệ Quản trị & Bảo mật (Admin Portal)
-* **Đăng nhập xác thực Cookie (Cookie Authentication):** Quản lý phiên làm việc bảo mật cho tài khoản Admin (`admin` / `admin123`).
+* **Đăng nhập xác thực Cookie (Cookie Authentication):** Quản lý phiên làm việc bảo mật cho tài khoản Admin (`admin` / `adminadmin`).
 * **Bảo vệ đường dẫn (Route Protection):** Áp dụng `@attribute [Authorize]` cho toàn bộ trang Admin; tự động chặn truy cập trái phép và yêu cầu đăng nhập.
 * **Đơn hàng chờ xử lý (`/outstandingorders`):** Danh sách các đơn mới đặt cần xử lý.
 * **Chi tiết đơn hàng & Duyệt đơn (`/orderdetail/{id}`):** Xem chi tiết từng món hàng và nút duyệt đơn (cập nhật `DateProcessed` và `AdminUser`).
@@ -66,7 +66,7 @@ eShop/
 
 ### 2. Thiết lập Cơ sở dữ liệu
 1. Mở SQL Server Management Studio (SSMS) hoặc `sqlcmd`.
-2. Chạy file script: `eShop.SchemaAndData.sql` có sẵn trong thư mục gốc của dự án.
+2. Chạy file script: `eShop.SchemaAndData.sql` có sẵn trong thư mục bài giảng.
 3. Kiểm tra chuỗi kết nối trong `eShop.Web/appsettings.json`:
 ```json
 "ConnectionStrings": {
@@ -88,4 +88,4 @@ dotnet run --project eShop.Web/eShop.Web.csproj
 
 Truy cập:
 * **Khách hàng:** `https://localhost:7080` (hoặc cổng hiển thị trên terminal).
-* **Quản trị Admin:** Bấm nút **Login** trên thanh menu (Tài khoản: `admin` / Mật khẩu: `admin123`).
+* **Quản trị Admin:** Bấm nút **Login** trên thanh menu (Tài khoản: `admin` / Mật khẩu: `adminadmin`).
