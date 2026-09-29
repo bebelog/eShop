@@ -6,7 +6,7 @@
 * **Họ và tên:** Nguyễn Viết Mẫn
 * **Mã sinh viên:** 23K4080026
 * **Trường:** Trường Đại học Kinh tế - Đại học Huế (HUE)
-* **Học phần:** Thực hành Visual Studio / Phát triển ứng dụng Web với .NET
+* **Học phần:** Lập trình ứng dụng Web
 * **Đề tài:** Xây dựng Website Thương Mại Điện Tử (eShop) theo kiến trúc Clean Architecture
 * **Nền tảng công nghệ:** 
   * **Framework:** ASP.NET Core 8.0 (.NET 8)
