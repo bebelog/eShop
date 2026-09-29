@@ -1,0 +1,46 @@
+﻿@using eShop.Web.CustomerPortal.ViewModels
+@using Microsoft.AspNetCore.Components.Forms
+
+<EditForm Model="Customer" OnValidSubmit="HandleValidSubmit" class="form-line">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group mb-2">
+        <label for="name">Name</label>
+        <InputText id="name" @bind-Value="Customer.CustomerName" class="form-control"></InputText>
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="address">Address</label>
+        <InputText id="address" @bind-Value="Customer.CustomerAddress" class="form-control"></InputText>
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="city">City</label>
+        <InputText id="city" @bind-Value="Customer.CustomerCity" class="form-control"></InputText>
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="province">Province</label>
+        <InputText id="province" @bind-Value="Customer.CustomerStateProvince" class="form-control"></InputText>
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="country">Country</label>
+        <InputText id="country" @bind-Value="Customer.CustomerCountry" class="form-control"></InputText>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public EventCallback<CustomerViewModel> OnCustomerInfoSubmitted { get; set; }
+
+    private CustomerViewModel Customer { get; set; } = new CustomerViewModel();
+
+    private void HandleValidSubmit()
+    {
+        OnCustomerInfoSubmitted.InvokeAsync(Customer);
+    }
+}

@@ -1,0 +1,28 @@
+﻿@using eShop.CoreBusiness.Models
+
+@if (Orders != null && Orders.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date Placed</th>
+                <th>Order Id</th>
+                <th>Country</th>
+                <th>State / Province</th>
+                <th>City</th>
+                <th>Customer Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Orders)
+            {
+                <OrderItemComponent Order="order" />
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public IEnumerable<Order>? Orders { get; set; }
+}

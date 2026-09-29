@@ -1,0 +1,24 @@
+﻿@page "/processedorders"
+@rendermode InteractiveServer
+@attribute [Authorize]
+
+@using eShop.CoreBusiness.Models
+@using eShop.UseCases.AdminPortal.ProcessedOrdersScreen
+@using eShop.Web.AdminPortal.Controls
+
+@inject IViewProcessedOrdersUseCase ViewProcessedOrdersUseCase
+
+<h3>Processed Orders</h3>
+<br />
+
+<OrderListComponent Orders="orders" />
+
+@code {
+    private IEnumerable<Order>? orders;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        orders = ViewProcessedOrdersUseCase.Execute();
+    }
+}

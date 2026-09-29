@@ -1,0 +1,37 @@
+﻿@page "/login"
+@rendermode InteractiveServer
+
+@using Microsoft.AspNetCore.Components.Forms
+@using eShop.Web.Common.ViewModels
+
+@inject NavigationManager NavigationManager
+
+<h3>Login</h3>
+<br />
+
+@if (loginViewModel != null)
+{
+    <EditForm Model="@loginViewModel" OnValidSubmit="HandleValidSubmit" class="form-line" style="max-width: 400px;">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group mb-3">
+            <label for="username-input">User Name</label>
+            <InputText id="username-input" @bind-Value="loginViewModel.UserName" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label for="password-input">Password</label>
+            <InputText id="password-input" @bind-Value="loginViewModel.Password" type="password" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </EditForm>
+}
+
+@code {
+    private LoginViewModel loginViewModel = new LoginViewModel();
+
+    private void HandleValidSubmit()
+    {
+        NavigationManager.NavigateTo($"/authenticate?user={loginViewModel.UserName}&pwd={loginViewModel.Password}", forceLoad: true);
+    }
+}

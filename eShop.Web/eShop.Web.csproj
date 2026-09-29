@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\eShop.Web.Modules\eShop.Web.CustomerPortal\Pages\Component.razor" Link="Component.razor" />
+    <None Include="..\eShop.Web.Modules\_Imports.razor" Link="_Imports.razor" />
+    <ProjectReference Include="..\Plugins\eShop.StateStore.DI\eShop.StateStore.DI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eShop.UseCases\eShop.UseCases.csproj" />
+    <ProjectReference Include="..\eShop.Web.Modules\eShop.Web.CustomerPortal\eShop.Web.CustomerPortal.csproj" />
+    <ProjectReference Include="..\Plugins\eShop.DataStore.HardCode\eShop.DataStore.HardCode.csproj" />
+    <ProjectReference Include="..\Plugins\eShop.ShoppingCartLocal\eShop.ShoppingCartLocalStorage.csproj" />
+    <ProjectReference Include="..\Plugins\eShop.StateStore.DI\eShop.StateStore.DI.csproj" />
+    <ProjectReference Include="..\eShop.CoreBusiness\eShop.CoreBusiness.csproj" />
+    <ProjectReference Include="..\eShop.Web.Modules\eShop.Web.AdminPortal\eShop.Web.AdminPortal.csproj" />
+    <ProjectReference Include="..\Plugins\eShop.DataStore.SQL.Dapper\eShop.DataStore.SQL.Dapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.10" />
+  </ItemGroup>
+
+</Project>

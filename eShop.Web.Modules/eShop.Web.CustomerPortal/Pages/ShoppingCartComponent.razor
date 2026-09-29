@@ -1,0 +1,63 @@
+﻿@page "/cart"
+@rendermode InteractiveServer
+@using eShop.CoreBusiness.Models
+@using eShop.UseCases.PluginInterfaces.StateStore
+@using eShop.UseCases.ShoppingCartScreen.interfaces
+@implements IDisposable
+
+@inject IViewShoppingCartUseCase viewShoppingCartUseCase
+@inject IShoppingCartStateStore shoppingCartStateStore
+
+<h3>Shopping Cart</h3>
+<br />
+
+@if (order != null && order.LineItems != null && order.LineItems.Count > 0)
+{
+    <div class="row">
+        <div class="col-6">
+            <ul>
+                @for (int i = 0; i < order.LineItems.Count; i++)
+                {
+                    <LineItemComponent LineItem="order.LineItems[i]"></LineItemComponent>
+
+                    @if (i < order.LineItems.Count - 1)
+                    {
+                        <li style="list-style:none">
+                            <hr />
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="col">
+            <OrderSummaryComponent order="order"></OrderSummaryComponent>
+        </div>
+    </div>
+}
+else
+{
+    <p>Giỏ hàng của bạn đang trống.</p>
+}
+
+@code {
+    private Order? order;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+        if(firstRender){
+            shoppingCartStateStore.AddStateChangeListeners(HandleShoppingCartStateChange);
+            order = await viewShoppingCartUseCase.Execute();
+            StateHasChanged();
+        }
+    }
+
+    private async void HandleShoppingCartStateChange()
+    {
+        order = await viewShoppingCartUseCase.Execute();
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        shoppingCartStateStore.RemoveStateChangeListeners(HandleShoppingCartStateChange);
+    }
+}

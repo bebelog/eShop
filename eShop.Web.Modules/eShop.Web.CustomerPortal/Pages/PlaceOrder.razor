@@ -1,0 +1,65 @@
+﻿@page "/placeorder"
+@rendermode InteractiveServer
+
+@using AutoMapper
+@using eShop.CoreBusiness.Models
+@using eShop.UseCases.PluginInterfaces.StateStore
+@using eShop.UseCases.ShoppingCartScreen.interfaces
+@using eShop.Web.CustomerPortal.Controls
+@using eShop.Web.CustomerPortal.ViewModels
+
+@inject IPlaceOrderUseCase PlaceOrderUseCase
+@inject NavigationManager NavigationManager
+@inject IViewShoppingCartUseCase ViewShoppingCartUseCase
+
+<h3>Placing Order</h3>
+<br />
+
+@if (Order != null && Order.LineItems != null && Order.LineItems.Count > 0)
+{
+    <div class="row">
+        <div class="col">
+            <CustomerFormComponent OnCustomerInfoSubmitted="HandleCustomerInfoSubmitted" />
+        </div>
+        <div class="col">
+            <OrderSummaryComponent order="Order" HidePlaceOrder="true" HidePlaceOrderButton="true" />
+        </div>
+    </div>
+}
+
+@code {
+    private Order? Order { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Order = await ViewShoppingCartUseCase.Execute();
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleCustomerInfoSubmitted(CustomerViewModel customerViewModel)
+    {
+        if (Order == null) return;
+
+        var mapperConfig = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<CustomerViewModel, Order>();
+        });
+
+        IMapper mapper = mapperConfig.CreateMapper();
+        mapper.Map(customerViewModel, Order);
+
+        var orderUniqueId = await PlaceOrderUseCase.Execute(Order);
+
+        if (!string.IsNullOrWhiteSpace(orderUniqueId))
+        {
+            NavigationManager.NavigateTo($"/orderconfirm/{orderUniqueId}");
+        }
+        else
+        {
+            // TODO: Display error message
+        }
+    }
+}

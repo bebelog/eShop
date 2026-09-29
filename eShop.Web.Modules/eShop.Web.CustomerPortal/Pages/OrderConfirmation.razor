@@ -1,0 +1,72 @@
+﻿@page "/orderconfirm/{UniqueId}"
+@page "/orderconfirmation/{UniqueId}"
+@rendermode InteractiveServer
+
+@using eShop.CoreBusiness.Models
+@using eShop.UseCases.OrderConfirmationScreen
+@using eShop.Web.CustomerPortal.Controls
+
+@inject IViewOrderConfirmationUseCase ViewOrderConfirmationUseCase
+
+<h3>Order Confirmation</h3>
+<br />
+
+@if (order != null)
+{
+    <p><b>Shipping Info:</b></p>
+    <p>@order.CustomerName</p>
+    <p>@order.CustomerAddress</p>
+    <p>@order.CustomerCity</p>
+    <p>@order.CustomerStateProvince</p>
+    <p>@order.CustomerCountry</p>
+
+    <br />
+
+    <OrderSummaryComponent order="order" HidePlaceOrder="true" HidePlaceOrderButton="true" />
+
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (order.LineItems != null)
+            {
+                @foreach (var item in order.LineItems)
+                {
+                    <tr>
+                        <td>@(item.Product?.Name ?? $"Product #{item.ProductId}")</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("c")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Sorry, there's nothing at this address.</p>
+}
+
+@code {
+    [Parameter]
+    public string? UniqueId { get; set; }
+
+    private Order? order;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (!string.IsNullOrWhiteSpace(UniqueId))
+        {
+            order = ViewOrderConfirmationUseCase.Execute(UniqueId);
+        }
+    }
+}
