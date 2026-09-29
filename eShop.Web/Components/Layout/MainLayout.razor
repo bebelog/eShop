@@ -1,17 +1,18 @@
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
-<PageTitle>eShop - Online Store</PageTitle>
+<PageTitle>eShop.Web</PageTitle>
 
-<div class="eshop-app">
-    <TopNavBar />
-    
-    <main class="main-content container py-4">
-        @Body
+        
+  
+
+    <main>
+        <TopNavBar></TopNavBar>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
     </main>
 
-    <footer class="eshop-footer py-4 mt-auto">
-        <div class="container text-center">
-            <p class="mb-0 text-muted small">© 2026 <strong>eShop</strong>. Built with ASP.NET Core 8 Blazor & Clean Architecture.</p>
-        </div>
-    </footer>
-</div>

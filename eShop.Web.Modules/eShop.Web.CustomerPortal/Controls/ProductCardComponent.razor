@@ -1,22 +1,12 @@
-@using eShop.CoreBusiness.Models
-
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="product-card">
-        <a href="@($"product/{product.ProductId}")" class="product-img-wrapper text-decoration-none">
-            <img src="@product.ImageLink" alt="@product.Name" loading="lazy" />
-        </a>
-        <div class="product-brand">@product.Brand</div>
-        <h5 class="product-title">
-            <NavLink href="@($"product/{product.ProductId}")">@product.Name</NavLink>
-        </h5>
-        <div class="d-flex align-items-center justify-content-between mt-auto pt-2">
-            <p class="product-price">@product.Price.ToString("c")</p>
-            <NavLink href="@($"product/{product.ProductId}")" class="btn btn-sm btn-primary">Details</NavLink>
-        </div>
+﻿<div class="card m-2 p-2" style="width: 12rem;">
+    <img src="@product.ImageLink" class="card-img-top" alt="" />
+    <div class="card-body">
+        <h5 class="card-title"><NavLink Href="@($"product/{product.ProductId}")">@product.Name</NavLink></h5>
+        <p class="card-text" style="color:darkred">@product.Price.ToString("c") </p>
     </div>
 </div>
 
 @code {
     [Parameter]
-    public Product product { get; set; } = null!;
+    public Product product { get; set; }
 }

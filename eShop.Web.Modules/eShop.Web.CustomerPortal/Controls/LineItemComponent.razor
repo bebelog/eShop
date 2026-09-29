@@ -1,35 +1,28 @@
-@using eShop.CoreBusiness.Models
+﻿@using eShop.CoreBusiness.Models
 @using eShop.UseCases.ShoppingCartScreen.interfaces
 @inject IDeleteProductUseCase deleteProductUseCase
 @inject IUpdateQuantityUseCase updateQuantityUseCase
 
 @if (LineItem != null && LineItem.Product != null)
 {
-    <div class="cart-item-card">
-        <div class="row align-items-center">
-            <div class="col-auto">
-                <img src="@LineItem.Product.ImageLink" alt="@LineItem.Product.Name" class="cart-item-img" />
+    <li class="row">
+        <div class="col">
+            <img src="@LineItem.Product.ImageLink" />
+        </div>
+        <div class="col">
+            <h5>@LineItem.Product.Name</h5>
+            <div>
+                Quantity:&nbsp;&nbsp;
+                <input type="number" min="0" value="@LineItem.Quantity" @onchange="HandleQuantityChange" />
             </div>
-            <div class="col">
-                <h6 class="fw-bold mb-1">@LineItem.Product.Name</h6>
-                <div class="text-muted small mb-2">@LineItem.Product.Brand</div>
-                <div class="d-flex align-items-center gap-3">
-                    <div class="d-flex align-items-center gap-2">
-                        <span class="small text-muted">Qty:</span>
-                        <input type="number" min="0" value="@LineItem.Quantity" @onchange="HandleQuantityChange" class="form-control form-control-sm text-center" style="width: 70px;" />
-                    </div>
-                    <div class="fw-bold text-primary">
-                        @LineItem.Product.Price.ToString("c")
-                    </div>
-                </div>
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-outline-danger btn-sm" @onclick="@(() => DeleteProduct(LineItem.ProductId))" title="Remove item">
-                    Delete
-                </button>
+            <div>
+                Price&nbsp;&nbsp;@LineItem.Product.Price.ToString("c")
             </div>
         </div>
-    </div>
+        <div class="col">
+            <button class="btn btn-light" @onclick="@(() => DeleteProduct(LineItem.ProductId))">Delete</button>
+        </div>
+    </li>
 }
 
 @code {

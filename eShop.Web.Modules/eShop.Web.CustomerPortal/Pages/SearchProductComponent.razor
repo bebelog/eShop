@@ -1,31 +1,27 @@
-@page "/"
+﻿@page "/"
 @page "/products"
 @rendermode InteractiveServer
 @inject ISearchProductUseCase searchProduct
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-        <h2 class="page-heading mb-1">Featured Products</h2>
-        <p class="text-muted small">Explore our premium catalog with high performance and quality.</p>
-    </div>
-</div>
+<h3>Search Product Component</h3>
+<br />
 
-<SearchBarComponent OnSearch="HandleSearch" />
+<SearchBarComponent OnSearch="HandleSearch"></SearchBarComponent>
+<br />
+<br />
 
-@if (products != null && products.Any())
+@if (products != null & products.Count() > 0)
 {
     <div class="row">
         @foreach (var product in products)
         {
-            <ProductCardComponent product="product" />
+            <ProductCardComponent product="product"></ProductCardComponent>
         }
     </div>
 }
 else
 {
-    <div class="alert alert-light border text-center py-5">
-        <p class="mb-0 text-muted">No products found matching your search criteria.</p>
-    </div>
+    <text>No Products Found.</text>
 }
 
 @code {
@@ -34,6 +30,7 @@ else
     protected override void OnInitialized()
     {
         base.OnInitialized();
+
         products = searchProduct.Execute();
     }
 

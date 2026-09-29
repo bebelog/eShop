@@ -2,10 +2,8 @@
 @implements IDisposable
 @inject IShoppingCartStateStore shoppingCartStateStore
 
-<NavLink class="cart-pill-btn text-decoration-none" href="cart">
-    <span>🛒</span>
-    <span>Cart</span>
-    <span class="cart-badge-count">@LineItemCount</span>
+<NavLink class="nav-link text-white" href="cart">
+    Cart: @LineItemCount
 </NavLink>
 
 @code {
