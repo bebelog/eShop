@@ -1,51 +1,367 @@
+/* --- Google Font & Global Light Base --- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    -webkit-font-smoothing: antialiased;
 }
 
-a, .btn-link {
-    color: #006bb7;
+/* Ẩn thanh About mặc định của template */
+.top-row {
+    display: none !important;
+}
+
+/* Khung nội dung chính */
+.content {
+    max-width: 1260px !important;
+    margin: 0 auto !important;
+    padding: 1.5rem 1rem 3rem 1rem !important;
+}
+
+/* Tiêu đề trang */
+h3 {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* --- 1. HEADER / NAVBAR FORM SÁNG HIỆN ĐẠI --- */
+.navbar.navbar-dark.bg-dark {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04) !important;
+    padding: 0.85rem 1.75rem !important;
+}
+
+.navbar.navbar-dark.bg-dark .navbar-brand {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    font-size: 1.4rem !important;
+    letter-spacing: -0.5px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.navbar.navbar-dark.bg-dark .navbar-brand::before {
+    content: "⚡";
+    font-size: 1.15rem;
+}
+
+.navbar.navbar-dark.bg-dark .nav-link {
+    color: #475569 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    border-radius: 8px !important;
+    padding: 0.45rem 0.9rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.navbar.navbar-dark.bg-dark .nav-link:hover {
+    color: #2563eb !important;
+    background-color: #f1f5f9 !important;
+}
+
+/* Nút Giỏ hàng Pill trên Navbar */
+.navbar.navbar-dark.bg-dark a[href="cart"],
+.navbar.navbar-dark.bg-dark .nav-link[href="cart"] {
+    background-color: #eff6ff !important;
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    border: 1px solid #bfdbfe !important;
+    border-radius: 50px !important;
+    padding: 0.4rem 1.1rem !important;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.1) !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.navbar.navbar-dark.bg-dark a[href="cart"]::before,
+.navbar.navbar-dark.bg-dark .nav-link[href="cart"]::before {
+    content: "🛒";
+    font-size: 0.95rem;
+}
+
+.navbar.navbar-dark.bg-dark a[href="cart"]:hover {
+    background-color: #dbeafe !important;
+    color: #1d4ed8 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* --- 2. KHUNG TÌM KIẾM SẢN PHẨM --- */
+.form-control {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.95rem !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.2s ease !important;
+    width: 320px !important;
+}
+
+.form-control:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18) !important;
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.4rem !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25) !important;
+    transition: all 0.2s ease !important;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn-primary:hover {
+    background-color: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35) !important;
+    transform: translateY(-1px) !important;
 }
 
-.content {
-    padding-top: 1.1rem;
+/* --- 3. THẺ SẢN PHẨM (PRODUCT CARDS) HIỆN ĐẠI --- */
+.card.m-2.p-2 {
+    width: 14rem !important;
+    margin: 0.75rem !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+    padding: 1rem !important;
 }
 
-h1:focus {
-    outline: none;
+.card.m-2.p-2:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.08) !important;
+    border-color: #cbd5e1 !important;
 }
 
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+/* Hình ảnh sản phẩm */
+.card.m-2.p-2 .card-img-top {
+    height: 165px !important;
+    object-fit: contain !important;
+    padding: 10px !important;
+    background-color: #ffffff !important;
+    border-radius: 10px !important;
+    transition: transform 0.3s ease !important;
 }
 
-.invalid {
-    outline: 1px solid #e50000;
+.card.m-2.p-2:hover .card-img-top {
+    transform: scale(1.06) !important;
 }
 
-.validation-message {
-    color: #e50000;
+/* Thân thẻ */
+.card.m-2.p-2 .card-body {
+    padding: 0.85rem 0.25rem 0 0.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    border-top: 1px solid #f1f5f9 !important;
 }
 
-.blazor-error-boundary {
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
-    padding: 1rem 1rem 1rem 3.7rem;
-    color: white;
+/* Tiêu đề sản phẩm - Không gạch chân xanh thô */
+.card.m-2.p-2 .card-title {
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.65rem !important;
+    min-height: 2.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.card.m-2.p-2 .card-title a {
+    color: #1e293b !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease !important;
+}
 
-.darker-border-checkbox.form-check-input {
-    border-color: #929292;
+.card.m-2.p-2 .card-title a:hover {
+    color: #2563eb !important;
+}
+
+/* Giá tiền hiện đại */
+.card.m-2.p-2 .card-text[style*="darkred"],
+.card.m-2.p-2 .card-text {
+    color: #2563eb !important;
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    letter-spacing: -0.3px !important;
+}
+
+/* --- 4. GIỎ HÀNG (SHOPPING CART) --- */
+ul {
+    padding-left: 0 !important;
+}
+
+li.row {
+    list-style: none !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 1.25rem !important;
+    margin-bottom: 1rem !important;
+    align-items: center !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.2s ease !important;
+}
+
+li.row:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+li.row img {
+    max-width: 100px !important;
+    max-height: 100px !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+    background: #ffffff !important;
+    padding: 6px !important;
+    border: 1px solid #f1f5f9 !important;
+}
+
+li.row h5 {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 0.5rem !important;
+}
+
+li.row input[type="number"] {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    padding: 0.35rem 0.5rem !important;
+    width: 75px !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+}
+
+.btn-light {
+    background-color: #fef2f2 !important;
+    border: 1px solid #fee2e2 !important;
+    color: #ef4444 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 0.45rem 1rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.btn-light:hover {
+    background-color: #fee2e2 !important;
+    border-color: #fca5a5 !important;
+    color: #dc2626 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Khung Order Summary */
+.card[style*="width: 25rem"],
+.card[style*="25rem"] {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+    background-color: #ffffff !important;
+    padding: 0.75rem !important;
+}
+
+.card[style*="width: 25rem"] .card-title {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    margin-bottom: 1rem !important;
+}
+
+.card[style*="width: 25rem"] .card-text {
+    font-size: 0.95rem !important;
+    color: #475569 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.card[style*="width: 25rem"] div[style*="darkred"],
+.card[style*="width: 25rem"] div[style*="color:darkred"] {
+    color: #2563eb !important;
+    font-size: 1.2rem !important;
+    padding-top: 0.65rem !important;
+    border-top: 2px dashed #e2e8f0 !important;
+}
+
+/* --- 5. TRANG CHI TIẾT SẢN PHẨM --- */
+.card[style*="width: 18rem"],
+.card[style*="18rem"] {
+    width: 100% !important;
+    max-width: 520px !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06) !important;
+    padding: 1.5rem !important;
+    background-color: #ffffff !important;
+    margin: 1.25rem 0 !important;
+}
+
+.card[style*="width: 18rem"] img,
+.card[style*="18rem"] img {
+    max-height: 250px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto 1.25rem auto !important;
+}
+
+.card[style*="width: 18rem"] label[style*="darkred"] {
+    color: #2563eb !important;
+    font-weight: 800 !important;
+    font-size: 1.35rem !important;
+}
+
+/* --- 6. BẢNG DỮ LIỆU ADMIN --- */
+.table {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+
+.table thead th {
+    background-color: #f8fafc !important;
+    color: #475569 !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 0.85rem 1rem !important;
+}
+
+.table tbody td {
+    padding: 0.9rem 1rem !important;
+    vertical-align: middle !important;
+    color: #1e293b !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.table tbody tr:hover {
+    background-color: #f8fafc !important;
 }
