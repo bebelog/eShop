@@ -1,8 +1,8 @@
-﻿@using eShop.UseCases.PluginInterfaces.StateStore
+@using eShop.UseCases.PluginInterfaces.StateStore
 @implements IDisposable
 @inject IShoppingCartStateStore shoppingCartStateStore
 
-<NavLink class="nav-link" href="cart">
+<NavLink class="nav-link text-white" href="cart">
     Cart: @LineItemCount
 </NavLink>
 
@@ -15,14 +15,14 @@
         {
             shoppingCartStateStore.AddStateChangeListeners(HandleShoppingCartStateChange);
             LineItemCount = await shoppingCartStateStore.GetItemsCount();
-            StateHasChanged();
+            await InvokeAsync(StateHasChanged);
         }
     }
 
     private async void HandleShoppingCartStateChange()
     {
         LineItemCount = await shoppingCartStateStore.GetItemsCount();
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
 
     public void Dispose()
